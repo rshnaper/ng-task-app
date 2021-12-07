@@ -1,9 +1,9 @@
 <div class="container">
   <h2>Task App</h2>
   <div class="row p-2">
-    <app-task-form (newTaskEvent)="addTask($event)"></app-task-form>
+    <app-task-form></app-task-form>
   </div>
   <div class="row p-2">
-    <app-task-list [tasks]="tasks" (onDeleteTask)="deleteTask($event)"></app-task-list>
+    <app-task-list></app-task-list>
   </div>
 </div>

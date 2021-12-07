@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Task } from 'src/app/models/Task';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { TaskService } from 'src/app/services/task-service.service';
 
 @Component({
   selector: 'app-task-details',
@@ -9,19 +10,16 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 })
 export class TaskDetailsComponent implements OnInit {
   @Input() task?: Task;
-
-  @Output()
-  onDeleteTask = new EventEmitter<Task>();
   
   faTimes = faTimes;
 
-  constructor() { }
+  constructor(private taskService:TaskService) { }
 
   ngOnInit(): void {
   }
 
   deleteTask(task:Task) {
-    this.onDeleteTask.emit(task);
+    this.taskService.deleteTask(task.id);
   }
 
   displayTaskCreationDate(task: Task): String {
